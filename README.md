@@ -14,6 +14,14 @@ inspired by the data reduction pipeline 'FIESTools' of the FIES spectrograph at 
 
 A detailed description of blues can be found in my Masterś thesis under the chapter "5. Pipeline: Blues". In short the combined software consist of `blues.py`, being the main script running modules from `BlueSONG-py` and `Plot_Tools.py`, for which the names suggests, are the main librirary of science modules and associated plot modules, respectively.  
 
+# Usage:
+The usage is straight forward since only `blues.py` needs to run from a python or ipython shell. However, one need to point the following directories indicated by strings; i) where the data to be analyzed is stored (`path/to/data/`), ii) where the software is stored,  and iii) where images and results produced by the software needs to be stored. The first can be found the `blues.py` and the two latter in `BlueSONG.py`.
+
+Looking into `blues.py` in more detail, it is here possible to skip the first step, the image reduction, (use `skip=0`) if the data already have been reduced by another software or have already been analyzed with blues. Also each module has a illustrative plotting module in order to visulaize the results, which can be activated using `plot=1`. This helps you both to understand the software and for troubleshooting. 
+
+# Output
+Ultimately the output of blues is a fully reduced spectrum around the Ca II lines and a prompt to the terminal of the S index activity proxy calculated using different spectral band definitions.  
+
 # Dependencies
 This software was written October 2018 (Copyright: Nicholas Jannsen) and typeset in Python 3. `blues` has been succesfully tested with python3.5-7 on a Linux system such as Ubuntu 16-20.
    1. numpy
@@ -32,14 +40,6 @@ This software was written October 2018 (Copyright: Nicholas Jannsen) and typeset
    
 With the newest installation of `pip`, all of the packages above can be installed using e.g.:
 ```pip install numpy```
-
-# Usage:
-The usage is straight forward since only `blues.py` needs to run from a python or ipython shell. However, one need to point the following directories indicated by strings; i) where the data to be analyzed is stored (`path/to/data/`), ii) where the software is stored,  and iii) where images and results produced by the software needs to be stored. The first can be found the `blues.py` and the two latter in `BlueSONG.py`.
-
-Looking into `blues.py` in more detail, it is here possible to skip the first step, the image reduction, (use `skip=0`) if the data already have been reduced by another software or have already been analyzed with blues. Also each module has a illustrative plotting module in order to visulaize the results, which can be activated using `plot=1`. This helps you both to understand the software and for troubleshooting. 
-
-# Output
-Ultimately the output of blues is a fully reduced spectrum around the Ca II lines and a prompt to the terminal of the S index activity proxy calculated using different spectral band definitions.  
 
 # Technical reports
 Aside the eShel manual (named "eShel_Installation_and_Maintenance_Manual.pdf" in this repository) from the scientific scope of this project some technical issues needed to be looked at and improved. The 'Technical_Reports.pdf' is attached to this repository where all the technical work and complications with eShel are found. 
