@@ -4,27 +4,16 @@ This project involves the commercial échelle spectrograph, eShel, mounted on th
 # blues
 `Software for` 
 
-# Software description 
+# Software description: `blues.py` and `BlueSONG`
+This python class is specifically made for the spectroscopic data reduction of the Shelyak eShel spectrograph
+which is installed at the Hertzsprung SONG node telescope at Tenrife, Spain. The software is originally built
+from structures of the 'SONGWriter' which is SONG's spectroscopic data reduction pipeline, and by others is 
+inspired by the data reduction pipeline 'FIESTools' of the FIES spectrograph at the NOT on La Palma.
+
 To explain the software in more detail we here present the results from it. The following code assumes that all data is placed in the same folder, and the science, flat, bias, and dark frames are likewise called so (you can call them whatever you wnat, just remember to change the names of the input files). The file 'test.py' can be used to make an easy test of the software. The following code example illustartes the usage:
 
 ```
-from DELPHINI import DELPHINI
-path = '/path/to/data/'
-# Call class
-XX = DELPHINI(path, 'science', 1, 1)
 
-# Image Reduction:
-XX.image_reduction('flat', 'bias')   
-
-# Aperture photometry:
-# Ellipse:
-x_coor = [146, 201,  87, 213]
-y_coor = [ 97,  52, 171, 208]
-XX.aperture_photometry(x_coor, y_coor, ['ellipse', 6, 48, 8, 172], 'local')
-# Trace:
-x_coor = [107,  165,  49, 176]
-y_coor = [103,   55, 176, 212]
-XX.aperture_photometry(x_coor, y_coor, ['trace', 3, 78, 8, 172], 'local')
 ```
 
 For the photometry software the first 2 entries in 'aperture_photometry' are the stellar coordinates. The next entry is the     "aperture" entry that takes 5 arguments: ['aperture', a, b, q, phi]. Here 'aperture' is either 'ellipse' or 'trace' corresponding to the two apertures. Because we are working with startrails, 'phi' is a tilt angle of the aperture between 0-180 degrees defined by the zero-point of the unit circle (hence counter clockwise from first quadrant). 
@@ -48,20 +37,23 @@ The third argument for the utility "aperture_photometry" is if a local or global
 
 
 # Usage and dependencies
-Delphini-1 has been succesfully tested with python2.7 on Linux systems.
-
-Some python packages need to be installed:
-
+This software was written October 2018 (Copyright: Nicholas Jannsen) and typeset in Python 3. `blues` has been succesfully tested with python3.5-7 on a Linux system such as Ubuntu 16-20.
    1. numpy
+   1. math
    1. scipy
-   1. pyplot
+   1. pylab
    1. matplotlib
    1. astropy
-   1. PIL
+   1. PyAstronomy
+   1. sys
+   1. time
+   1. glob
+   1. heapq
+   1. bottleneck
+   1. uncertainties
+With the newest installation of `pip`, all of the packages above can be installed using e.g.:
 
-All of the above can be installed using pip, e.g.:
-
-```pip install numpy, scipy, matplotlib, pyfits, pycurl, ephem, rpy2```
+```pip install numpy```
 
 # Technical reports
 Aside from the scientific scope of this project some technical issues needed to be looked at and improved. The 'TechnicalReport1*' and 'TechnicalReport2*' is related to my travel the 3. September 2017. 
